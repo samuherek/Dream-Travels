@@ -1,7 +1,7 @@
 !!!
 
 %html
-  %title Muse
+  %title Travel Junkie
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   %link{:rel => "stylesheet", :href => "http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"}
@@ -11,7 +11,7 @@
 %body
   %header
     .wrapper.clearfix
-      #logo= link_to "Muse", root_path
+      #logo= link_to "Travel Junkie", root_path
       %nav
         - if user_signed_in?
           = link_to current_user.name, edit_user_registration_path
@@ -19,6 +19,7 @@
         - else
           = link_to "Sign In", new_user_session_path
           = link_to "Sign Up", new_user_registration_path, class: "button"
+
   %p.notice= notice
   %p.alert= alert
 
