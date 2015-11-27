@@ -1,0 +1,4 @@
+- @post.each do |post|
+  %h2= link_to post.title, post
+
+= link_to "New Place", new_post_path(@post)
