@@ -4,5 +4,11 @@
   %p
     = post.comments.count
     Comments
+  %p
+    = post.get_likes.count
+    Likes
+  %p
+    = post.get_dislikes.count
+    Dislikes
 
 = link_to "New Place", new_post_path(@post)
