@@ -1,0 +1,13 @@
+.one-third {
+  width: 32%;
+  float: left;
+  margin: 0 1%;
+}
+
+.one-third:first-child {
+  margin-left: 0;
+}
+
+.one-third:nth-child(3n+3) {
+  margin-right: 0;
+}

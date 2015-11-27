@@ -1,9 +1,17 @@
-%h1 Travel Junkie
+.wrapper
 
-%ul
-  - @post.each do |post|
-    %li= image_tag post.image.url(:medium)
-    %h1= post.title
-    %p= post.link
-    %p= post.description
-    %p= post.user.name
+  %h1.text-center Travel Junkie
+
+  .hero
+    .hero-box
+      %h3 Share you dreamed travel plans
+      = link_to "Add Your First Dream", new_user_registration_path, class: "button"
+
+  .latest-dreams
+    %h3.text-center.latest-dreams-headline Latest Dreams
+    %ul.list
+      - @post.each do |post|
+        %li.one-third
+          = link_to (image_tag post.image.url(:medium), class: "image"), post
+          %h1= link_to post.title, post_path(post)
+          %p= post.user.name
