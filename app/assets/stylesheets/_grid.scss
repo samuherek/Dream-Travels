@@ -7,7 +7,19 @@
 .one-third:first-child {
   margin-left: 0;
 }
+.one-third:nth-child(4n) {
+  margin-left: 0;
+}
 
 .one-third:nth-child(3n+3) {
   margin-right: 0;
+}
+
+
+.two-thirds {
+  width: 66%;
+  float: left;
+}
+.one-third:first-child {
+  margin-left: 0;
 }

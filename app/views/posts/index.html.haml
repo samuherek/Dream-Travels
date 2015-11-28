@@ -1,14 +1,40 @@
-- @post.each do |post|
-  = link_to (image_tag post.image.url(:small)), post
-  %h2= link_to post.title, post
-  %p
-    = post.comments.count
-    Comments
-  %p
-    = post.get_likes.count
-    Likes
-  %p
-    = post.get_dislikes.count
-    Dislikes
+- if user_signed_in?
+  .wrapper.clearfix
+    .welcome-section.text-center
+      %h3
+        Hello
+        = current_user.name
+      %p
+        Share your dreamed plcaes you would like to visit and let others know about your plans
+        = link_to "Add New Place", new_post_path, class: "link"
+- else
+  .wrapper.clearfix
+    .welcome-section.text-center
+      %h3
+        Create your own bucket list of dreamed places to visit
+      %p
+        We all need a list of places to keep us motivated. Start your own list and see what others consider dreamed places
+      .button-section
+        = link_to "Sign Up", new_user_registration_path, class: "button button-action"
+        = link_to "Log In", new_user_session_path, class: "button"
 
-= link_to "New Place", new_post_path(@post)
+
+.wrapper.clearfix
+  - @post.each do |post|
+    .one-third.post
+      .post-image
+        = link_to (image_tag post.image.url(:small)), post
+      .post-content
+        .post-title
+          %h2= link_to post.title, post
+        .post-data.clearfix
+          %p.username
+            Shared By
+            = post.user.name
+          %p.buttons
+            %span
+              = fa_icon "comment"
+              = post.comments.count
+            %span
+              = fa_icon "thumbs-up"
+              = post.get_likes.count

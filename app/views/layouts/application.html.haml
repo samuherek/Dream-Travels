@@ -41,15 +41,17 @@
 
   = yield
 
-  %footer.wrapper
-    .one-third
-      %h3 More
-      %ul.list
-        %li
-          %p something
-        %li
-          %p something
-        %li
-          %p something
-    .two-thirds
-      %h3 More shit
+
+  - unless current_page?(new_user_session_path) || current_page?(new_user_registration_path)
+    %footer.wrapper
+      .one-third
+        %h3 More
+        %ul.list
+          %li
+            %p something
+          %li
+            %p something
+          %li
+            %p something
+      .two-thirds
+        %h3 More shit
