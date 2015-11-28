@@ -29,8 +29,8 @@
           %h2= link_to post.title, post
         .post-data.clearfix
           %p.username
-            Shared By
-            = post.user.name
+            %span.muted Shared by
+            = link_to post.user.name, user_path(post.user_id), class: "link-accent"
           %p.buttons
             %span
               = fa_icon "comment"

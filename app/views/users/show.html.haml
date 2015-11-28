@@ -1,1 +1,25 @@
-%h1 Showing users
+.wrapper.clearfix
+
+  .section
+    %h2= @user.name
+    %p= @user.created_at
+
+  .section
+    - @posts.each do |post|
+      .one-third.post
+        .post-image
+          = link_to (image_tag post.image.url(:small)), post
+        .post-content
+          .post-title
+            %h2= link_to post.title, post
+          .post-data.clearfix
+            %p.username
+              Shared By
+              = post.user.name
+            %p.buttons
+              %span
+                = fa_icon "comment"
+                = post.comments.count
+              %span
+                = fa_icon "thumbs-up"
+                = post.get_likes.count

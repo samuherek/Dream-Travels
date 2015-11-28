@@ -11,6 +11,17 @@ a {
   }
 }
 
+.link-accent {
+  color: $darkColor;
+  &:hover {
+    color: lighten($darkColor, 15%);
+  }
+}
+
+.muted {
+  opacity: 0.5;
+}
+
 .bold {
   font-weight: 800;
 }
