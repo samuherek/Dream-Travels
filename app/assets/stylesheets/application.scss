@@ -329,3 +329,38 @@
     }
   }
 }
+
+
+
+
+
+
+
+
+//  SHow Page
+
+
+.post-details-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  .post-details-title {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  .post-details-data {
+    padding: 0;
+  }
+}
+
+.random-posts {
+  background: lighten($lineColor, 10%);
+  padding: 1rem;
+}
+
+.random-posts {
+  width: 75%;
+  float: right;
+  .post-image {
+    height: 10rem;
+  }
+}

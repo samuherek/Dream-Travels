@@ -1,27 +1,56 @@
-= image_tag @post.image.url(:medium)
-%h1= @post.title
-%p= @post.link
-%p= @post.description
-%p= @post.user.name
-%p
-  = @post.get_upvotes.size
-  Likes
-%p
-  = @post.get_downvotes.size
-  Dislikes
+.wrapper.clearfix
+  .post-details-header
+    %h1.post-details-title= @post.title
+    %p.post-details-data
+      Shared by:
+      = link_to @post.user.name
+      = time_ago_in_words(@post.created_at)
+      ago
+    - if @post.user == current_user
+      = link_to "Edit", edit_post_path(@post), class: "button"
+      = link_to "Destroy", post_path(@post), method: :delete, data: { confirm: "Are you sure?"}, class: "button button-danger"
 
-= link_to "Like", like_post_path(@post), method: :get
-= link_to "Dislike", dislike_post_path(@post), method: :get
+  .two-thirds
+    = image_tag @post.image.url(:medium), class: "image"
+    %p
+      %span.bold Resources:
+      = link_to @post.link, @post.link
+    = link_to like_post_path(@post), method: :get do
+      = @post.get_upvotes.size
+      Recommend
 
-#comment
-  %h2.comment-count= pluralize(@post.comments.count, "Comment")
-  - @comments.each do |comment|
-    .comment
-      %p.username= comment.user.name
-      %p.content= comment.content
+    = link_to dislike_post_path(@post), method: :get do
+      = @post.get_downvotes.size
+      Don't Like
 
-  = render 'comments/form'
+    %p= @post.description
 
-= link_to "Edit", edit_post_path(@post)
-= link_to "Destroy", post_path(@post), method: :delete, data: { confirm: "Are you sure?"}
-= link_to "Home", root_path
+    #comment
+      %h2.comment-count= pluralize(@post.comments.count, "Comment")
+      - @comments.each do |comment|
+        .comment
+          %p.username= comment.user.name
+          %p.content= comment.content
+
+      = render 'comments/form'
+
+
+  .one-third
+    .random-posts
+      - @random_posts.each do |post|
+        .post-image
+          = link_to (image_tag post.image.url(:small)), post
+        .post-content
+          .post-title
+            %h2= link_to post.title, post
+          .post-data.clearfix
+            %p.username
+              Shared By
+              = post.user.name
+            %p.buttons
+              %span
+                = fa_icon "comment"
+                = post.comments.count
+              %span
+                = fa_icon "thumbs-up"
+                = post.get_likes.count
