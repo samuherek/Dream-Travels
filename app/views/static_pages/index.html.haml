@@ -1,14 +1,15 @@
 .wrapper
 
-  %h1.text-center Travel Junkie
-
   .hero
     .hero-box
       %h3 Share you dreamed travel plans
-      = link_to "Add Your First Dream", new_user_registration_path, class: "button"
+      .link-section
+        = link_to "Add Your First Dream", new_user_registration_path, class: "button-action"
+      .link-section
+        = link_to "Learn More", root_path, class: "link learn-more"
 
-  .latest-dreams
-    %h3.text-center.latest-dreams-headline Latest Dreams
+  .latest-dreams.clearfix
+    %h3.text-center.latest-dreams-headline.headline-lines Latest Dreams
     %ul.list
       - @post.each do |post|
         %li.one-third
