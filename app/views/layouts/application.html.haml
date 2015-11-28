@@ -11,16 +11,45 @@
 %body
   %header
     .wrapper.clearfix
+      %nav.pull-left
+        = link_to "Browse", posts_path
+        = link_to "About Us"
       #logo= link_to "Travel Junkie", root_path
       %nav
         - if user_signed_in?
-          = link_to current_user.name, edit_user_registration_path
           = link_to "Add New", new_post_path
+          %button.drop-menu.nav-link
+            = current_user.name
+            = fa_icon "angle-down"
+          %ul.dropdown.list
+            %li
+              = link_to "Account", edit_user_registration_path
+            %li
+              = link_to "Log Out", destroy_user_session_path, method: :delete
         - else
           = link_to "Sign In", new_user_session_path
-          = link_to "Sign Up", new_user_registration_path, class: "button"
+          = link_to "Sign Up", new_user_registration_path
 
-  %p.notice= notice
-  %p.alert= alert
+  - if flash[:notice]
+    .notice-box.notification
+      %p= notice
+      = fa_icon "times", class: "notification-close-icon"
+  - if flash[:alert]
+    .alert-box.notification
+      %p= alert
+      = fa_icon "times", class: "notification-close-icon"
 
   = yield
+
+  %footer.wrapper
+    .one-third
+      %h3 More
+      %ul.list
+        %li
+          %p something
+        %li
+          %p something
+        %li
+          %p something
+    .two-thirds
+      %h3 More shit

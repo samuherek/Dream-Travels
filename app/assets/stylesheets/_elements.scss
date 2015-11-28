@@ -1,0 +1,122 @@
+
+a {
+  transition: $quickTransition;
+}
+
+.link {
+  font-size: 0.8em;
+  color: $mediumColor;
+  &:hover {
+    color: lighten($mediumColor, 15%);
+  }
+}
+
+.link-section {
+  padding: 1rem 0;
+}
+
+.dropdown {
+  position: absolute;
+  display: none;
+  min-width: 10rem;
+  background: $lightColor;
+  box-shadow:
+    0 2px 5px 0px $boxShadowColor,
+    0 5px 20px 0px $boxShadowColor;
+  z-index: 1000;
+  right: 0;
+  top: 80%;
+  li {
+    display: block;
+    a {
+      display: block;
+      padding: 0;
+    }
+  }
+}
+
+.button {
+ padding: .7rem 1.25rem;
+ outline: none;
+ color: $darkColor;
+}
+
+.button-action {
+  background: $accentColor;
+  padding: 0.75rem 1.25rem;
+  color: $lightColor;
+  border: none;
+  &:hover {
+    background: lighten($accentColor, 10%);
+  }
+}
+
+input {
+  width: 100%;
+  background: $lightColor;
+  border: 1px solid $lineColor;
+  &:focus {
+    border: 1px solid $accentColor;
+    outline: none;
+  }
+}
+
+.field {
+  height: 2.5rem;
+}
+
+.form-inputs {
+  .input {
+    margin-bottom: 1rem;
+  }
+  abbr[title] {
+    border-bottom: 1px solid transparent;
+  }
+  .input.password, .input.email, .input.string {
+    position: relative;
+    label {
+      position: absolute;
+      font-size: 0.75em;
+      padding: 0 0.15rem;
+      left: 0.5rem;
+      top: -0.35rem;
+      color: $darkColor;
+      background: $lightColor;
+    }
+    input {
+      height: 2.5rem;
+      padding: 0 0.5rem;
+    }
+  }
+}
+
+.boolean label {
+  font-size: 0.8em;
+  color: $mediumColor;
+}
+input[type="checkbox"] {
+  width: 1.5rem;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+
+.notification {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: $mediumLightColor;
+  color: $lightColor;
+  z-index: 1000;
+  text-align: center;
+  .notification-close-icon {
+    position: absolute;
+    padding: 0.5rem;
+    cursor: pointer;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
