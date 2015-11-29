@@ -8,11 +8,24 @@
       .link-section
         = link_to "Learn More", root_path, class: "link learn-more"
 
+.wrapper
+  %h3.text-center.latest-dreams-headline.headline-lines Latest Dreams
   .latest-dreams.clearfix
-    %h3.text-center.latest-dreams-headline.headline-lines Latest Dreams
-    %ul.list
-      - @post.each do |post|
-        %li.one-third
-          = link_to (image_tag post.image.url(:medium), class: "image"), post
-          %h1= link_to post.title, post_path(post)
-          %p= post.user.name
+    - @post.each do |post|
+      .one-third.post
+        .post-image
+          = link_to (image_tag post.image.url(:small)), post
+        .post-content
+          .post-title
+            %h2= link_to post.title, post
+          .post-data.clearfix
+            %p.username
+              %span.muted Shared by
+              = link_to post.user.name, user_path(post.user_id), class: "link-accent"
+            %p.buttons
+              %span
+                = fa_icon "comment"
+                = post.comments.count
+              %span
+                = fa_icon "thumbs-up"
+                = post.get_likes.count

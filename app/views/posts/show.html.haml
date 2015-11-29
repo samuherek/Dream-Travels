@@ -3,7 +3,7 @@
     %h1.post-details-title= @post.title
     %p.post-details-data
       Shared by:
-      = link_to @post.user.name
+      = link_to @post.user.name, user_path(@post.user)
       = time_ago_in_words(@post.created_at)
       ago
     - if @post.user == current_user
@@ -23,7 +23,7 @@
       = @post.get_downvotes.size
       Don't Like
 
-    %p= @post.description
+    %p= simple_format(@post.description)
 
     #comment
       %h2.comment-count= pluralize(@post.comments.count, "Comment")
