@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :users
+  resources :users do
+    resources :profile
+  end
 
   root 'static_pages#index'
 
