@@ -1,5 +1,7 @@
 .wrapper.clearfix
 
+  = link_to "create your profile", new_user_profile_path(current_user)
+
   .section
     %h2= @user.name
     %p= @user.created_at
